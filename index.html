@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WeatherJS App | JavaScript</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+</head>
+<body>
+  <header class="hero is-info">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">WeatherJS</h1>
+
+        <h2 class="subtitle">Using the MeatWeather API to fetch the weather</h2>
+      </div>
+    </div>
+  </header>
+
+  <section class="section has-background-dark">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="box has-background-info">
+            <h3 class="title" id="wLocation"></h3>
+            
+            <p id="wDesc"></p>
+
+            <p id="wString"></p>
+
+            <figure class="image is-48x48">
+              <img id="wIcon" src="" alt="">
+            </figure>
+
+            <ul id="wDetails">
+              <li id="wHumidity"></li>
+              <li id="wDewpoint"></li>
+              <li id="wFeelsLike"></li>
+              <li id="wWind"></li>
+            </ul>
+
+            <hr>
+
+            <button class="button is-success" type="button" data-toggle="modal" data-target="#locationModal">Change Location</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div class="modal" id="locationModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <h4 class="modal-card-title">Choose Location</h4>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <form id="wForm">
+          <div class="field">
+            <label class="label" for="city">City</label>
+
+            <div class="control">
+              <input class="input" type="text" name="city" id="city" placeholder="Enter City Name...">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="province">Province</label>
+
+            <div class="control">
+              <input class="input" type="text" name="province" id="province" placeholder="Enter Province Name...">
+            </div>
+          </div>
+        </form>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" id="wSearchLocation">Search</button>
+
+        <button class="button is-link is-light">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="LocalStorage.js"></script>
+  <script src="Weather.js"></script>
+  <script src="UI.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
