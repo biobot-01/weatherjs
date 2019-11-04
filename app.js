@@ -9,6 +9,18 @@ const modal = new Modal();
 document.addEventListener('DOMContentLoaded', getWeather);
 // Toggle the modal on DOM load
 document.addEventListener('DOMContentLoaded', modal.toggle());
+// Change location event
+document.getElementById('wSearchLocation').addEventListener('click', (e) => {
+  const city = document.getElementById('city').value;
+  const country = document.getElementById('country').value;
+
+  weather.changeLocation(city, country);
+
+  // Get & display weather
+  getWeather();
+  // Close modal
+  modal.close();
+});
 
 // Get weather
 function getWeather() {
