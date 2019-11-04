@@ -1,5 +1,7 @@
 // Init weather object
 const weather = new Weather('Cape Town', 'Western Cape');
+// Init ui object
+const ui = new UI();
 
 // Get weather on DOM load
 document.addEventListener('DOMContentLoaded', getWeather);

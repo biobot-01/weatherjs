@@ -26,19 +26,22 @@
           <div class="box has-background-info">
             <h3 class="title" id="wLocation"></h3>
             
+            <p id="wMain"></p>
+
             <p id="wDesc"></p>
 
-            <p id="wString"></p>
-
-            <figure class="image is-48x48">
-              <img id="wIcon" src="" alt="">
-            </figure>
+            <span class="icon">
+              <i id="wIcon"></i>
+            </span>
 
             <ul id="wDetails">
               <li id="wHumidity"></li>
-              <li id="wDewpoint"></li>
-              <li id="wFeelsLike"></li>
-              <li id="wWind"></li>
+              <li id="wPressure"></li>
+              <li id="wTemp"></li>
+              <li id="wMaxTemp"></li>
+              <li id="wMinTemp"></li>
+              <li id="wWindDeg"></li>
+              <li id="wWindSpeed"></li>
             </ul>
 
             <hr>
@@ -69,10 +72,10 @@
           </div>
 
           <div class="field">
-            <label class="label" for="province">Province</label>
+            <label class="label" for="country">Country</label>
 
             <div class="control">
-              <input class="input" type="text" name="province" id="province" placeholder="Enter Province Name...">
+              <input class="input" type="text" name="country" id="country" placeholder="Enter Country eg. ZA">
             </div>
           </div>
         </form>
