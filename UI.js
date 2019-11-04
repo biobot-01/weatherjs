@@ -29,14 +29,7 @@ class UI {
     this.location.textContent = weather.name;
     this.weatherMain.textContent = weather.weather[0].main;
     this.weatherDesc.textContent = weather.weather[0].description;
-    const style = `
-      #wIcon::before {
-        content: "\\${weather.weather[0].icon}";
-      }
-    `;
-    const styleElem = document.createElement('style');
-    styleElem.innerHTML = style;
-    document.head.append(styleElem);
+    this.weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
     this.humidity.textContent = `Relative Humidity: ${weather.main.humidity}`;
     this.pressure.textContent = `Air Pressure: ${weather.main.pressure}`;
     this.temp.textContent = `Feels Like: ${weather.main.temp}`;
