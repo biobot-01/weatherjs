@@ -21,32 +21,41 @@
 
   <section class="section has-background-dark">
     <div class="container">
-      <div class="columns">
-        <div class="column">
-          <div class="box has-background-info">
-            <h3 class="title" id="wLocation"></h3>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="box has-background-info has-text-centered">
+            <div class="columns is-centered">
+              <div class="column is-6">
+                <h3 class="title has-text-white" id="wLocation"></h3>
             
-            <p id="wMain"></p>
+                <p class="subtitle" id="wMain"></p>
 
-            <p id="wDesc"></p>
+                <p id="wDesc"></p>
 
-            <figure class="image is-64x64">
-              <img id="wIcon" src="#" alt="#">
-            </figure>
+                <p class="has-text-white" id="wTemp"></p>
 
-            <ul id="wDetails">
-              <li id="wHumidity"></li>
-              <li id="wPressure"></li>
-              <li id="wTemp"></li>
-              <li id="wMaxTemp"></li>
-              <li id="wMinTemp"></li>
-              <li id="wWindDeg"></li>
-              <li id="wWindSpeed"></li>
-            </ul>
+                <figure class="image is-64x64" style="margin:0 auto;">
+                  <img id="wIcon" src="#" alt="#">
+                </figure>
 
-            <hr>
+                <div class="card">
+                  <div class="card-content">
+                    <ul id="wDetails">
+                      <li id="wHumidity"></li>
+                      <li id="wPressure"></li>
+                      <li id="wMaxTemp"></li>
+                      <li id="wMinTemp"></li>
+                      <li id="wWindDeg"></li>
+                      <li id="wWindSpeed"></li>
+                    </ul>
+                  </div>
+                </div>
 
-            <button class="button is-success" type="button" data-toggle="modal" data-target="#locationModal">Change Location</button>
+                <hr>
+
+                <button class="button is-success" type="button" data-toggle="modal" data-target="#locationModal">Change Location</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
