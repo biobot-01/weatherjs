@@ -1,5 +1,5 @@
 // Init weather object
-const weather = new Weather('Cape Town', 'Western Cape');
+const weather = new Weather('Cape Town', 'ZA');
 // Init ui object
 const ui = new UI();
 
