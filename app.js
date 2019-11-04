@@ -1,5 +1,9 @@
+// Init local storage
+const storage = new LocalStorage();
+// Get stored location data
+const weatherLocation = storage.getLocationData();
 // Init weather object
-const weather = new Weather('Cape Town', 'ZA');
+const weather = new Weather(weatherLocation.city, weatherLocation.country);
 // Init ui object
 const ui = new UI();
 // Init modal object
@@ -14,8 +18,10 @@ document.getElementById('wSearchLocation').addEventListener('click', (e) => {
   const city = document.getElementById('city').value;
   const country = document.getElementById('country').value;
 
+  // Change location
   weather.changeLocation(city, country);
-
+  // Set location in local storage
+  storage.setLocationData(city, country);
   // Get & display weather
   getWeather();
   // Close modal
