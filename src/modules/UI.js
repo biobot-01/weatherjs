@@ -1,14 +1,14 @@
 /**
  * UI module
  * Module for displaying data in html
- * 
+ *
  * @version 1.0.0
  * @author Kevin Michael
  * @license MIT
- * 
+ *
 **/
 
-class UI {
+export class UI {
   constructor() {
     this.location = document.getElementById('wLocation');
     this.weatherMain = document.getElementById('wMain');
@@ -23,7 +23,7 @@ class UI {
     this.windDeg = document.getElementById('wWindDeg');
     this.windSpeed = document.getElementById('wWindSpeed');
   }
-  
+
   // Display weather data in html UI
   showWeather(weather) {
     this.location.textContent = `${weather.name}, ${weather.sys.country}`;

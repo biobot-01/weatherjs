@@ -1,14 +1,14 @@
 /**
  * LocalStorage module
  * Module for storing data to the user's client
- * 
+ *
  * @version 1.0.0
  * @author Kevin Michael
  * @license MIT
- * 
+ *
 **/
 
-class LocalStorage {
+export class LocalStorage {
   constructor() {
     this.city;
     this.country;

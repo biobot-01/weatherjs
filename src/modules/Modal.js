@@ -1,14 +1,14 @@
 /**
  * Modal module
  * Module for showing & hiding the modal
- * 
+ *
  * @version 1.0.0
  * @author Kevin Michael
  * @license MIT
- * 
+ *
 **/
 
-class Modal {
+export class Modal {
   constructor() {
     this.modal = document.getElementById('locationModal');
     this.openButton = document.getElementById('openModalButton');

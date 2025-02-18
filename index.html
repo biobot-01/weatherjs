@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>WeatherJS App | JavaScript</title>
+  <title>Weather App | JS</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 </head>
 <body>
   <header class="hero is-info">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">WeatherJS</h1>
+        <h1 class="title">Weather App</h1>
 
         <h2 class="subtitle">Using the OpenWeatherMap API to fetch the weather</h2>
       </div>
@@ -27,7 +26,7 @@
             <div class="columns is-centered">
               <div class="column is-6">
                 <h3 class="title has-text-white" id="wLocation"></h3>
-            
+
                 <p class="subtitle" id="wMain"></p>
 
                 <p id="wDesc"></p>
@@ -97,10 +96,6 @@
     </div>
   </div>
 
-  <script src="LocalStorage.js"></script>
-  <script src="Weather.js"></script>
-  <script src="UI.js"></script>
-  <script src="Modal.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="/src/app.js"></script>
 </body>
 </html>

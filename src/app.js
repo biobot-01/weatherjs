@@ -1,3 +1,8 @@
+// Module Imports
+import { LocalStorage } from './modules/LocalStorage.js';
+import { Modal } from './modules/Modal.js';
+import { UI } from './modules/UI.js';
+import { Weather } from './modules/Weather.js';
 // Init local storage
 const storage = new LocalStorage();
 // Get stored location data
