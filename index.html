@@ -10,7 +10,7 @@
 <body>
   <header class="hero is-info">
     <div class="hero-body">
-      <div class="container">
+      <div class="container has-text-centered">
         <h1 class="title">Weather App</h1>
 
         <h2 class="subtitle">Using the OpenWeatherMap API to fetch the weather</h2>
@@ -18,10 +18,10 @@
     </div>
   </header>
 
-  <section class="section has-background-dark">
+  <section class="section is-medium has-background-dark">
     <div class="container">
       <div class="columns is-centered">
-        <div class="column is-8">
+        <div class="column is-12 is-12-mobile is-8-widescreen">
           <div class="box has-background-info has-text-centered">
             <div class="columns is-centered">
               <div class="column is-6">
@@ -52,7 +52,7 @@
 
                 <hr>
 
-                <button class="button is-success" type="button" id="openModalButton">Change Location</button>
+                <button class="button is-info" type="button" id="open-modal" role="open modal">Change Location</button>
               </div>
             </div>
           </div>
@@ -62,36 +62,29 @@
   </section>
 
   <!-- Modal -->
-  <div class="modal" id="locationModal">
+  <div class="modal" id="the-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <h4 class="modal-card-title">Choose Location</h4>
-        <button class="delete" aria-label="close"></button>
+        <button class="delete" aria-label="close" id="delete" type="button" role="close modal"></button>
       </header>
       <section class="modal-card-body">
-        <form id="wForm">
+        <form id="the-form">
           <div class="field">
-            <label class="label" for="city">City</label>
+            <label class="label" for="city">Your City and/or State</label>
 
             <div class="control">
-              <input class="input" type="text" name="city" id="city" placeholder="Enter City Name...">
+              <input class="input" type="text" name="city" id="city" placeholder="Enter City Name, State eg. Cape Town, ZA">
             </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="country">Country</label>
-
-            <div class="control">
-              <input class="input" type="text" name="country" id="country" placeholder="Enter Country eg. ZA">
-            </div>
+            <p class="help is-danger is-hidden" id="error-city">Enter a valid City Name and/or State. eg. Cape Town, ZA</p>
           </div>
         </form>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success" id="wSearchLocation">Search</button>
+        <button class="button is-success" id="search" type="submit" role="search button">Search</button>
 
-        <button class="button is-link is-light" id="wClose">Cancel</button>
+        <button class="button is-info" id="close-modal" type="button" role="close modal">Cancel</button>
       </footer>
     </div>
   </div>

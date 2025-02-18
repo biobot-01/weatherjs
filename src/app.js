@@ -5,40 +5,61 @@ import { UI } from './modules/UI.js';
 import { Weather } from './modules/Weather.js';
 // Init local storage
 const storage = new LocalStorage();
-// Get stored location data
-const weatherLocation = storage.getLocationData();
+console.log('storage', storage);
+// Get stored data
+const data = storage.getData();
+console.log('data', data);
 // Init weather object
-const weather = new Weather(weatherLocation.city, weatherLocation.country);
+const weather = new Weather(data.city, data.state);
+console.log('weather', weather);
 // Init ui object
 const ui = new UI();
+// console.log('ui', ui);
 // Init modal object
 const modal = new Modal();
+// console.log('modal', modal);
+// Get search city button
+const searchButton = document.getElementById('search');
 
 // Get weather on DOM load
-document.addEventListener('DOMContentLoaded', getWeather);
-// Toggle the modal on DOM load
-document.addEventListener('DOMContentLoaded', modal.toggle());
-// Change location event
-document.getElementById('wSearchLocation').addEventListener('click', (e) => {
+// document.addEventListener('DOMContentLoaded', getWeather);
+document.addEventListener('DOMContentLoaded', function() {
+  updateCity();
+  updateWeather();
+  // Toggle the modal on DOM load
+  modal.handleClickButtons();
+});
+// Update weather on click
+searchButton.addEventListener('click', (e) => {
   const city = document.getElementById('city').value;
-  const country = document.getElementById('country').value;
 
-  // Change location
-  weather.changeLocation(city, country);
-  // Set location in local storage
-  storage.setLocationData(city, country);
-  // Get & display weather
-  getWeather();
-  // Close modal
-  modal.close();
+  if (city.length > 1) {
+    // Update location
+    weather.setCity(city);
+    updateCity();
+    updateWeather();
+    // Close modal
+    modal.toggleElemStyles();
+  }
+});
+// Update weather on keypress 'enter'
+document.getElementById('the-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  searchButton.click();
 });
 
-// Get weather
-function getWeather() {
-  weather.getWeather()
-  .then(results => {
-    console.log(results);
-    ui.showWeather(results);
-  })
-  .catch(err => console.log(err));
+// Update city
+function updateCity() {
+  weather.getCity().then(data => {
+    weather.setCoordinates(data);
+    storage.setLocation(data);
+  }).catch(err => console.log(err));
+}
+
+// Update weather
+function updateWeather() {
+  weather.getWeather().then(data => {
+    storage.setWeather(data);
+    ui.showWeather(data);
+  }).catch(err => console.log(err));
 }

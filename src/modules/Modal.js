@@ -10,32 +10,29 @@
 
 export class Modal {
   constructor() {
-    this.modal = document.getElementById('locationModal');
-    this.openButton = document.getElementById('openModalButton');
-    this.deleteButton = document.querySelector('.delete');
-    this.closeButton = document.getElementById('wClose');
+    this.htmlElem = document.documentElement;
+    this.modal = document.getElementById('the-modal');
+    this.openButton = document.getElementById('open-modal');
+    this.deleteButton = document.getElementById('delete');
+    this.closeButton = document.getElementById('close-modal');
   }
 
-  toggle() {
-    const closeButtons = [this.deleteButton, this.closeButton];
+  // Toggle the modal elements class
+  toggleElemStyles() {
+    this.htmlElem.classList.toggle('is-clipped');
+    this.modal.classList.toggle('is-active');
+  }
 
-    this.openButton.addEventListener('click', () => {
-      document.documentElement.className = 'is-clipped';
-      this.modal.classList.add('is-active');
+  // Add event listener to modal buttons
+  handleClickButtons() {
+    const buttons = [
+      this.openButton,
+      this.closeButton,
+      this.deleteButton,
+    ];
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => this.toggleElemStyles());
     });
-
-    for (let i = 0; i < closeButtons.length; i++) {
-      const close = closeButtons[i];
-
-      close.addEventListener('click', () => {
-        document.documentElement.classList.remove('is-clipped');
-        this.modal.classList.remove('is-active');
-      });
-    }
-  }
-
-  close() {
-    document.documentElement.classList.remove('is-clipped');
-    this.modal.classList.remove('is-active');
   }
 }

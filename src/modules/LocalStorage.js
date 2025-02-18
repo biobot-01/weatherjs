@@ -9,34 +9,38 @@
 **/
 
 export class LocalStorage {
+  defaultCity = 'Cape Town';
+  defaultState = 'ZA';
+
   constructor() {
-    this.city;
-    this.country;
-    this.defaultCity = 'Cape Town';
-    this.defaultCountry = 'ZA';
+    this.data = {
+      city: null,
+      state: null,
+      weather: {}
+    };
   }
 
-  getLocationData() {
-    if (localStorage.getItem('city') === null) {
-      this.city = this.defaultCity;
+  getData() {
+    if (localStorage.getItem('data') === null) {
+      this.data.city = this.defaultCity;
+      this.data.state = this.defaultState;
     } else {
-      this.city = localStorage.getItem('city');
+      this.data = JSON.parse(localStorage.getItem('data'));
     }
 
-    if (localStorage.getItem('country') === null) {
-      this.country = this.defaultCountry;
-    } else {
-      this.country = localStorage.getItem('country');
-    }
-
-    return {
-      city: this.city,
-      country: this.country
-    }
+    return this.data;
   }
 
-  setLocationData(city, country) {
-    localStorage.setItem('city', city);
-    localStorage.setItem('country', country);
+  setData(data) {
+    localStorage.setItem('data', JSON.stringify(data));
+  }
+
+  setLocation(data) {
+    this.data.city = data.name;
+    this.data.state = data.state;
+  }
+
+  setWeather(data) {
+    this.data.weather = data;
   }
 }
