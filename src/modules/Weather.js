@@ -75,9 +75,8 @@ export class Weather {
     }
   }
 
-  // Change location coordinates
-  setCoordinates(data) {
-    this.location.lon = data.lon;
-    this.location.lat = data.lat;
+  // Set location data
+  setLocation(data) {
+    this.location = data;
   }
 }
