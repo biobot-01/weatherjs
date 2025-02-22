@@ -8,21 +8,23 @@
  *
 **/
 
-export class LocalStorage {
+class LocalStorage {
   defaultCity = 'Cape Town';
   defaultCountry = 'ZA';
 
   constructor() {
     this.data = {
-      city: {},
+      location: {},
       weather: {}
     };
   }
 
   getData() {
     if (localStorage.getItem('data') === null) {
-      this.data.city.name = this.defaultCity;
-      this.data.city.state = this.defaultCountry;
+      this.data.location = {
+        name: this.defaultCity,
+        state: this.defaultCountry
+      };
     } else {
       this.data = JSON.parse(localStorage.getItem('data'));
     }
@@ -35,10 +37,12 @@ export class LocalStorage {
   }
 
   setLocation(data) {
-    this.data.city = data;
+    this.data.location = data;
   }
 
   setWeather(data) {
     this.data.weather = data;
   }
 }
+
+export { LocalStorage };

@@ -7,9 +7,9 @@ import { Weather } from './modules/Weather.js';
 const storage = new LocalStorage();
 // Get stored data
 const data = storage.getData();
-console.log('data', data);
+console.log('data', {...data});
 // Init weather object
-const weather = new Weather(data.city.name, data.city.state);
+const weather = new Weather(data.location.name, data.location.state);
 console.log('weather', weather);
 // Init UI object
 const ui = new UI();
@@ -21,7 +21,6 @@ const searchButton = document.getElementById('search');
 // Update city
 async function updateCity() {
   await weather.getCity().then(data => {
-    weather.setLocation(data);
     storage.setLocation(data);
   }).catch(err => console.log(err));
 }
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await updateCity();
   await updateWeather();
   // Show weather on UI
-  ui.showWeather(data.weather);
+  ui.showWeather(data);
   // Toggle the modal on DOM load
   modal.handleClickButtons();
 });
@@ -52,7 +51,7 @@ searchButton.addEventListener('click', async () => {
     await updateCity();
     await updateWeather();
     // Show weather on UI
-    ui.showWeather(data.weather);
+    ui.showWeather(data);
     // Close modal
     modal.toggleElemStyles();
   }

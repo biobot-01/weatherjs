@@ -18,13 +18,8 @@ import { getCityData, getWeatherData } from '../data.js';
 export class Weather {
   // apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
-  constructor(city, state) {
-    this.location = {
-      city,
-      state,
-      lon: null,
-      lat: null
-    };
+  constructor(location) {
+    this.location = {...location};
   }
 
   // Fetch city from API
@@ -36,6 +31,8 @@ export class Weather {
       // return data;
       const response = await getCityData();
       const data = response[0];
+      // Set location data
+      this.location = data;
       console.log('City Data response: ', data);
       return data;
     } catch (error) {
@@ -73,10 +70,5 @@ export class Weather {
       this.location.city = value;
       this.location.state = null;
     }
-  }
-
-  // Set location data
-  setLocation(data) {
-    this.location = data;
   }
 }
