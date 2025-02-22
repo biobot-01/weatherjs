@@ -6,6 +6,7 @@
   <title>Weather App | JS</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="/src/css/app.css">
 </head>
 <body>
   <header class="hero is-info">
@@ -18,41 +19,179 @@
     </div>
   </header>
 
-  <section class="section is-medium has-background-dark">
+  <section class="section has-background-dark">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-12 is-12-mobile is-8-widescreen">
-          <div class="box has-background-info has-text-centered is-hidden" id="weather-box">
-            <div class="columns is-centered">
-              <div class="column is-6">
-                <h3 class="title has-text-white" id="location"></h3>
+          <div class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <h3 class="is-size-5">
+                  <span class="icon-text has-text-black is-align-items-center">
+                    <span class="icon is-medium">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                    </span>
+                    <span id="location"></span>
+                  </span>
+                </h3>
+              </div>
 
-                <p class="subtitle" id="main"></p>
+              <div class="level-item">
+                <button class="button is-info is-rounded" type="button" id="refresh" title="Refresh after 10 min" disabled>
+                  <span class="icon">
+                    <i class="is-size-3 wi wi-refresh"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
 
-                <p id="desc"></p>
+            <div class="level-right">
+              <div class="level-item">
+                <button class="button is-info" type="button" id="open-modal" role="open modal">Change Location</button>
+              </div>
+            </div>
+          </div>
 
-                <p class="has-text-white" id="temp"></p>
+          <div class="columns">
+            <div class="column is-6 is-12-mobile">
+              <div class="box">
+                <div class="block is-flex is-justify-content-space-between">
+                  <div>
+                    <h4>Current weather</h4>
+                    <p id="time"></p>
+                  </div>
 
-                <figure class="image is-64x64" style="margin:0 auto;">
-                  <img id="icon" src="#" alt="weather icon">
-                </figure>
-
-                <div class="card">
-                  <div class="card-content">
-                    <ul id="details">
-                      <li id="humidity"></li>
-                      <li id="pressure"></li>
-                      <li id="max-temp"></li>
-                      <li id="min-temp"></li>
-                      <li id="wind-deg"></li>
-                      <li id="wind-speed"></li>
-                    </ul>
+                  <div>
+                    <p id="date"></p>
                   </div>
                 </div>
 
-                <hr>
+                <div class="block is-flex" id="desc">
+                  <div class="mr-3">
+                    <figure class="image is-64x64" style="margin:0 auto;">
+                      <img id="icon" src="#" alt="weather icon">
+                    </figure>
+                  </div>
 
-                <button class="button is-info" type="button" id="open-modal" role="open modal">Change Location</button>
+                  <div>
+                    <div class="icon-text mb-2">
+                      <span class="is-size-1" id="temp" style="line-height:2rem;"></span>
+                      <span class="icon is-small">
+                        <i class="is-size-4 wi wi-celsius"></i>
+                      </span>
+                    </div>
+
+                    <p class="has-text-weight-bold is-size-5" id="main"></p>
+                  </div>
+                </div>
+
+                <div class="level">
+                  <div class="level-item">
+                    <div>
+                      <p>Wind</p>
+                      <p id="wind-speed"></p>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div class="icon-text is-align-items-center">
+                      <span class="icon is-large">
+                        <i id="wind-icon" class="is-size-1 wi wi-wind"></i>
+                      </span>
+                      <span id="wind-deg" class="is-size-5"></span>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div title="Amount of moisture present in the air relative to the maximum amount of moisture the air can contain at its current temperature.">
+                      <p>Humidity</p>
+                      <div class="icon-text">
+                        <span id="humidity"></span>
+                        <span class="icon" style="margin-left:-4px;">
+                          <i class="is-size-5 wi wi-humidity"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div>
+                      <p>Feels like</p>
+                      <div class="icon-text">
+                        <span id="feels-like"></span>
+                        <span class="icon" style="margin-left:-12px;">
+                          <i class="is-size-5 wi wi-degrees"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="level">
+                  <div class="level-item">
+                    <div title="Good visibility (5 - 10 km)">
+                      <p>Visibility</p>
+                      <p id="visibility"></p>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div title="Pressure is the weight of the air in the atmosphere. Higher pressure is usually associated with sunny weather, lower pressure with stormy weather.">
+                      <p>Pressure</p>
+                      <p id="pressure"></p>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div>
+                      <p>Max</p>
+                      <div class="icon-text">
+                        <span id="temp-max"></span>
+                        <span class="icon" style="margin-left:-12px;">
+                          <i class="is-size-5 wi wi-degrees"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div>
+                      <p>Min</p>
+                      <div class="icon-text">
+                        <span id="temp-min"></span>
+                        <span class="icon" style="margin-left:-12px;">
+                          <i class="is-size-5 wi wi-degrees"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="column is-6 is-12-mobile">
+              <div class="box" style="height:100%;">
+                <div class="block">
+                  <p>Sun</p>
+                </div>
+
+                <div class="level" style="height:60%;">
+                  <div class="level-item">
+                    <div>
+                      <span class="icon is-large">
+                        <i class="is-size-2 wi wi-sunrise"></i>
+                      </span>
+                      <p>Sunrise</p>
+                      <p id="sunrise"></p>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div>
+                      <span class="icon is-large">
+                        <i class="is-size-2 wi wi-sunset"></i>
+                      </span>
+                      <p>Sunset</p>
+                      <p id="sunset"></p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -89,6 +228,6 @@
     </div>
   </div>
 
-  <script type="module" src="/src/app.js"></script>
+  <script type="module" src="/src/js/app.js"></script>
 </body>
 </html>
